@@ -1,0 +1,12 @@
+# 肌·癒皮膚管理中心 官網
+# 最後更新 2026-11-09
+#
+# ⚠ 目前全站禁止索引，因為內容尚未備齊（照片為佔位圖、部分區塊隱藏中）。
+# 內容補齊、隱藏區塊恢復之後，請把下面的 Disallow 那行改成：
+#     Disallow:
+# 這樣才會開放 Google 與 AI 爬蟲收錄。
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://jiyu-skincare.github.io/sitemap.xml
