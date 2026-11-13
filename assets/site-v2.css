@@ -72,7 +72,8 @@ nav{position:fixed;inset:0 0 auto 0;z-index:40;height:var(--nav-h);display:flex;
   padding-inline:var(--pad);justify-content:space-between;gap:24px;color:var(--on-dark);
   background:rgba(30,22,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 @keyframes nav-in{from{background:rgba(30,22,17,0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0)}to{background:rgba(30,22,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}}
-@supports (animation-timeline:scroll()){nav{animation:nav-in linear both;animation-timeline:scroll(root);animation-range:60vh 100vh}}
+/* 只有首頁（首屏是深色牆面）才讓導覽列一開始透明；內頁右上可能是淺色照片，固定用深色底 */
+@supports (animation-timeline:scroll()){nav.nav-fade{animation:nav-in linear both;animation-timeline:scroll(root);animation-range:60vh 100vh}}
 .brand{font-family:"Noto Serif TC",serif;font-weight:300;font-size:20px;letter-spacing:.16em;white-space:nowrap}
 .nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);font-size:13.5px;letter-spacing:.1em;white-space:nowrap}
 .nav-links a:not(.btn-line){color:var(--on-dark-2);transition:color .3s}
@@ -128,6 +129,11 @@ nav .btn-line{padding:8px 20px}
 .cp-img{position:absolute;top:0;right:0;width:58%;height:100%;
   -webkit-mask-image:linear-gradient(to right,transparent 0,#000 34%);mask-image:linear-gradient(to right,transparent 0,#000 34%)}
 .cp-img img{width:100%;height:100%;object-fit:cover}
+/* 原廠儀器照是冷灰色調，稍微調暖才不會跟頁面打架 */
+.brand-shot img{filter:sepia(.22) saturate(.92) brightness(.9) contrast(1.02)}
+/* 原廠照左上或右上有品牌標誌：半屏的照片往下讓出導覽列高度，標誌完整露出；窄欄的照片會把標誌切一半，改成裁掉上緣 */
+.split-img.brand-shot img{top:var(--nav-h);height:calc(100% - var(--nav-h));object-position:center top}
+.trio .split-img.brand-shot img{top:auto;bottom:0;height:117%;object-position:center bottom}
 .cp-body{position:relative;z-index:1;max-width:25em}
 .cp-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:46px}
 .cp-tabs a{border:1px solid var(--ln);padding:6px 16px;font-size:12px;letter-spacing:.08em;color:var(--t2);white-space:nowrap;transition:border-color .3s,color .3s}
@@ -184,3 +190,40 @@ footer .brand{color:var(--on-dark)}
     .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 6% cover 26%}
   }
 }
+
+/* ══ 課程內頁 ══ 最後更新 2026-11-13 */
+.crumb{font-size:12px;letter-spacing:.08em;color:var(--t2);margin-bottom:34px}
+.crumb a:hover{color:var(--gold)}
+.crumb i{font-style:normal;margin-inline:8px;opacity:.5}
+.page-hero h1{font-size:clamp(34px,4.2vw,58px);font-weight:200;letter-spacing:.06em;line-height:1.25}
+.page-hero .sub-en{margin-top:10px;font-family:Jost,sans-serif;font-size:14px;letter-spacing:.3em;color:var(--t2)}
+.price-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 18px;margin-top:36px;padding-top:24px;border-top:1px solid var(--ln);max-width:30em}
+.price-row b{font-family:Jost,sans-serif;font-weight:300;font-size:clamp(28px,3vw,38px);letter-spacing:.04em}
+.price-row span{font-size:13px;color:var(--t2)}
+.page-hero .btn-line{margin-top:34px;align-self:flex-start}
+.split.flip .split-img{order:-1}
+.split.flip .split-txt{padding:calc(var(--nav-h) + 30px) var(--pad) 60px clamp(28px,5vw,80px)}
+
+/* 價格區 */
+.sec{padding:clamp(84px,10vw,140px) var(--pad)}
+.sec-head{max-width:34em;margin-bottom:46px}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.plans div{padding:30px 22px 30px 0}
+.plans div+div{padding-left:26px;border-left:1px solid var(--ln)}
+.plans dt{font-size:12.5px;color:var(--t2);letter-spacing:.08em}
+.plans dd{margin-top:8px;font-family:Jost,sans-serif;font-weight:300;font-size:clamp(24px,2.5vw,32px);letter-spacing:.03em}
+.plans small{display:block;margin-top:6px;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;color:var(--t2);letter-spacing:.04em}
+.notes{margin-top:26px;font-size:13px;color:var(--t2)}
+@media(max-width:860px){.plans{grid-template-columns:1fr 1fr}.plans div{padding:22px 14px 22px 0}.plans div:nth-child(3){padding-left:0;border-left:0}.plans div:nth-child(n+3){border-top:1px solid var(--ln)}
+  .split.flip .split-txt{padding:64px var(--pad) 72px}}
+
+/* 常見問題 */
+.faq{border-top:1px solid var(--ln);max-width:46em}
+.faq details{border-bottom:1px solid var(--ln)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;font-size:15.5px;font-weight:300;letter-spacing:.05em;transition:color .3s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--gold)}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:1px;background:currentColor}
+.faq summary::before{content:"";position:absolute;right:11.5px;top:50%;width:1px;height:12px;background:currentColor;transform:translateY(-50%);transition:opacity .3s}
+.faq details[open] summary::before{opacity:0}
+.faq p{padding:0 0 26px;font-size:14px;color:var(--t2);max-width:40em}
