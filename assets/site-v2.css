@@ -1,0 +1,151 @@
+/* 肌·癒官網 v2：深色極簡版
+   最後更新 2026-11-13
+   色：深棕 / 沙色 兩種底交替，暖金只用在細線與小字
+   字：Noto Sans TC 細體，重點字加粗做對比；英文小標 Jost
+   圓角：全站 0 */
+:root{
+  --dark:#2A2019;
+  --sand:#AFA088;
+  --gold:#B89A6A;
+  --on-dark:#F2EBDF;
+  --on-dark-2:rgba(242,235,223,.64);
+  --line-dark:rgba(242,235,223,.16);
+  --on-sand:#2A2019;
+  --on-sand-2:rgba(42,32,25,.88);
+  --line-sand:rgba(42,32,25,.22);
+  --pad:clamp(22px,7.2vw,104px);
+  --nav-h:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{background:var(--dark);color:var(--on-dark);
+  font-family:"Noto Sans TC",system-ui,sans-serif;font-weight:300;
+  font-size:15px;line-height:2.1;letter-spacing:.09em;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+strong{font-weight:500}
+.en{font-family:Jost,"Noto Sans TC",sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:.32em}
+.tofill{opacity:.5}
+.nb{display:inline-block}  /* 中文斷行只斷在標點後，避免孤字 */
+
+/* 兩種底色的文字配色 */
+.on-dark{background:var(--dark);color:var(--on-dark);--t2:var(--on-dark-2);--ln:var(--line-dark);--ac:var(--gold)}
+.on-sand{background:var(--sand);color:var(--on-sand);--t2:var(--on-sand-2);--ln:var(--line-sand);--ac:var(--on-sand)}
+
+.eyebrow{font-size:11.5px;letter-spacing:.34em;color:var(--ac);margin-bottom:26px}
+.eyebrow .en{letter-spacing:.34em}
+h1,h2,h3{font-weight:300;letter-spacing:.13em;line-height:1.65}
+.h-lg{font-size:clamp(23px,2.5vw,34px)}
+.lead{margin-top:26px;color:var(--t2);max-width:27em;font-size:14.5px;text-wrap:pretty}
+
+/* 連結樣式：只有一種主要動作「LINE 預約」 */
+.btn-line{display:inline-block;border:1px solid currentColor;padding:11px 26px;font-size:12.5px;
+  letter-spacing:.24em;white-space:nowrap;transition:background .35s,color .35s}
+.on-dark .btn-line:hover,nav .btn-line:hover{background:var(--on-dark);color:var(--dark)}
+.on-sand .btn-line:hover{background:var(--on-sand);color:var(--sand)}
+.btn-line:active{transform:scale(.98)}
+.link-u{font-size:12.5px;letter-spacing:.2em;padding-bottom:5px;border-bottom:1px solid currentColor;white-space:nowrap}
+.link-u:hover{color:var(--gold)}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:40;height:var(--nav-h);display:flex;align-items:center;
+  padding-inline:var(--pad);justify-content:space-between;gap:24px;color:var(--on-dark);
+  background:rgba(42,32,25,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.brand{font-family:"Noto Serif TC",serif;font-weight:400;font-size:19px;letter-spacing:.2em;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);font-size:12.5px;letter-spacing:.2em;white-space:nowrap}
+.nav-links a:not(.btn-line){color:var(--on-dark-2);transition:color .3s}
+.nav-links a:not(.btn-line):hover{color:var(--on-dark)}
+nav .btn-line{padding:8px 20px}
+@media(max-width:820px){.nav-links a:not(.btn-line){display:none}}
+
+/* 一屏一段 */
+.panel{min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:calc(var(--nav-h) + 40px) var(--pad) 60px}
+.hero h1{font-size:clamp(26px,3.3vw,46px);letter-spacing:.16em}
+.hero .h1-sub{display:block;margin-top:34px;font-size:14px;letter-spacing:.2em;line-height:2.3;color:var(--on-dark-2)}
+.hero p{font-size:14px;letter-spacing:.2em;line-height:2.3;color:var(--on-dark-2)}
+
+/* 左文右圖 */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:100dvh}
+.split-txt{display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--nav-h) + 30px) clamp(28px,5vw,80px) 60px var(--pad)}
+.split-img{position:relative;overflow:hidden;min-height:60vh}
+.split-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.spec{margin-top:44px;border-top:1px solid var(--ln);max-width:30em}
+.spec div{display:flex;justify-content:space-between;gap:24px;padding:15px 0;border-bottom:1px solid var(--ln);font-size:13px}
+.spec dt{color:var(--t2);white-space:nowrap}
+.spec dd{text-align:right}
+
+/* 只放一句話的呼吸段 */
+.breathe{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:90px var(--pad)}
+.breathe h2{font-size:clamp(21px,2.3vw,30px);letter-spacing:.18em}
+.breathe p{margin-top:22px;font-size:13px;letter-spacing:.2em;color:var(--t2)}
+
+/* 一欄文字加兩張直幅圖 */
+.trio{display:grid;grid-template-columns:1fr 1fr 1fr;min-height:100dvh}
+.trio .split-txt{padding-right:clamp(24px,3vw,48px)}
+.steps{margin-top:36px;border-top:1px solid var(--ln);max-width:26em}
+.steps li{list-style:none;padding:16px 0;border-bottom:1px solid var(--ln)}
+.steps b{display:block;font-weight:400;font-size:14.5px;letter-spacing:.14em}
+.steps span{display:block;margin-top:2px;font-size:13px;color:var(--t2);line-height:1.95}
+
+/* 課程：一堂課一屏，圖在右側融進底色 */
+.cp{position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden;
+  padding:calc(var(--nav-h) + 30px) var(--pad) 60px}
+.cp-img{position:absolute;top:0;right:0;width:58%;height:100%;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 34%);mask-image:linear-gradient(to right,transparent 0,#000 34%)}
+.cp-img img{width:100%;height:100%;object-fit:cover}
+.cp-body{position:relative;z-index:1;max-width:25em}
+.cp-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:46px}
+.cp-tabs a{border:1px solid var(--ln);padding:6px 16px;font-size:11.5px;letter-spacing:.18em;color:var(--t2);white-space:nowrap;transition:border-color .3s,color .3s}
+.cp-tabs a:hover,.cp-tabs a.on{border-color:currentColor;color:inherit}
+.cp-name{font-size:clamp(30px,3.7vw,50px);letter-spacing:.14em;line-height:1.4;white-space:nowrap}
+.cp-price{margin-top:8px;font-family:Jost,sans-serif;font-size:15px;letter-spacing:.24em;color:var(--t2)}
+.cp-desc{margin-top:28px;font-size:14px;color:var(--t2);text-wrap:pretty}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chips span{border:1px solid var(--ln);padding:5px 15px;font-size:12px;letter-spacing:.14em;white-space:nowrap}
+.cp-links{display:flex;flex-wrap:wrap;gap:30px;margin-top:38px}
+
+/* 交通資訊 */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,90px);align-items:center;
+  padding:clamp(90px,11vw,150px) var(--pad)}
+.info{margin-top:40px;border-top:1px solid var(--ln)}
+.info div{display:grid;grid-template-columns:5.5em 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--ln);font-size:13.5px}
+.info dt{color:var(--t2)}
+.visit-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.map-slot{aspect-ratio:4/3;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;
+  font-size:12.5px;letter-spacing:.2em;color:var(--t2);text-align:center;padding:20px}
+
+footer{padding:54px var(--pad);display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap;
+  font-size:12px;letter-spacing:.2em;color:var(--on-dark-2);border-top:1px solid var(--line-dark)}
+footer .brand{color:var(--on-dark)}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap}
+
+/* 手機 */
+@media(max-width:860px){
+  .split,.trio,.visit{grid-template-columns:1fr}
+  .split,.trio{min-height:0}
+  .split-img{order:-1;min-height:74vh}
+  .split-txt{padding:64px var(--pad) 72px}
+  .trio .split-txt{grid-column:1}
+  .trio .split-img{order:0;min-height:56vh}
+  .trio{grid-template-columns:1fr 1fr}
+  .trio .split-txt{grid-column:1 / -1}
+  .cp{display:block;padding:0;min-height:0}
+  .cp-img{position:relative;width:100%;height:64vh;
+    -webkit-mask-image:linear-gradient(to top,transparent 0,#000 30%);mask-image:linear-gradient(to top,transparent 0,#000 30%)}
+  .cp-body{padding:8px var(--pad) 76px;margin-top:-40px}
+  .cp-tabs{margin-bottom:30px}
+  .cp-name{white-space:normal;text-wrap:balance}
+}
+
+/* 動態：首屏淡入，其餘捲動進場。不靠 JS，不支援的瀏覽器直接顯示內容 */
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1{animation:rise 1.5s cubic-bezier(.16,1,.3,1) .15s both}
+  .hero p{animation:rise 1.5s cubic-bezier(.16,1,.3,1) .55s both}
+  @supports (animation-timeline:view()){
+    .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 6% cover 26%}
+  }
+}
