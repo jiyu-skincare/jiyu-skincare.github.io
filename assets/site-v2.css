@@ -1,7 +1,7 @@
 /* 肌·癒官網 v2：深色極簡版
    最後更新 2026-11-13
    色：深棕 / 沙色 兩種底交替，暖金只用在細線與小字
-   字：Noto Sans TC 細體，重點字加粗做對比；英文小標 Jost
+   字：Noto Sans TC，標題 200 極細、重點字 400、內文 300，字距收窄；英文 Jost 300
    圓角：全站 0 */
 :root{
   --dark:#2A2019;
@@ -15,44 +15,66 @@
   --line-sand:rgba(42,32,25,.22);
   --pad:clamp(22px,7.2vw,104px);
   --nav-h:72px;
+  /* 牆面質感：亮刷痕、暗刷痕、細顆粒。純 CSS 產生，不依賴照片 */
+  --streak-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='1000'%3E%3Cfilter id='a' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0052 0.0024' numOctaves='3' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.86 0 0 0 0 0.72 0.95 0 0 0 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+  --streak-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='1000'%3E%3Cfilter id='b' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.0028' numOctaves='3' seed='29'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.06 0 0 0 0 0.04 1.05 0 0 0 -0.46'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.26 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;margin:0;padding:0;border-radius:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
 body{background:var(--dark);color:var(--on-dark);
   font-family:"Noto Sans TC",system-ui,sans-serif;font-weight:300;
-  font-size:15px;line-height:2.1;letter-spacing:.09em;overflow-x:hidden}
+  font-size:14.5px;line-height:1.9;letter-spacing:.03em;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-strong{font-weight:500}
+strong{font-weight:400}
 .en{font-family:Jost,"Noto Sans TC",sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:.32em}
 .tofill{opacity:.5}
 .nb{display:inline-block}  /* 中文斷行只斷在標點後，避免孤字 */
 
 /* 兩種底色的文字配色 */
-.on-dark{background:var(--dark);color:var(--on-dark);--t2:var(--on-dark-2);--ln:var(--line-dark);--ac:var(--gold)}
-.on-sand{background:var(--sand);color:var(--on-sand);--t2:var(--on-sand-2);--ln:var(--line-sand);--ac:var(--on-sand)}
+.on-dark{color:var(--on-dark);--t2:var(--on-dark-2);--ln:var(--line-dark);--ac:var(--gold);
+  background-color:var(--dark);
+  background-image:var(--grain),
+    radial-gradient(110% 85% at 12% 0%,rgba(122,92,68,.34),transparent 62%),
+    linear-gradient(165deg,#35281F 0%,#2A2019 48%,#1F1711 100%);
+  background-size:220px 220px,100% 100%,100% 100%;background-blend-mode:soft-light,normal,normal}
+/* 第二種深色：光從右下來，讓相鄰的深色段不會長得一樣 */
+.on-dark.tone-b{background-image:var(--grain),
+    radial-gradient(95% 80% at 92% 100%,rgba(128,96,70,.3),transparent 60%),
+    linear-gradient(200deg,#211812 0%,#2B2019 52%,#34271E 100%)}
+.on-sand{color:var(--on-sand);--t2:var(--on-sand-2);--ln:var(--line-sand);--ac:var(--on-sand);
+  background-color:var(--sand);
+  background-image:var(--grain),
+    radial-gradient(100% 90% at 18% 8%,rgba(214,200,176,.5),transparent 62%),
+    linear-gradient(168deg,#B8A98F 0%,#AC9D84 50%,#9C8D75 100%);
+  background-size:220px 220px,100% 100%,100% 100%;background-blend-mode:soft-light,normal,normal}
 
 .eyebrow{font-size:11.5px;letter-spacing:.34em;color:var(--ac);margin-bottom:26px}
 .eyebrow .en{letter-spacing:.34em}
-h1,h2,h3{font-weight:300;letter-spacing:.13em;line-height:1.65}
+h1,h2,h3{font-weight:200;letter-spacing:.08em;line-height:1.4}
+.on-dark h1,.on-dark h2,.on-dark h3{color:#FBF8F2}
 .h-lg{font-size:clamp(23px,2.5vw,34px)}
-.lead{margin-top:26px;color:var(--t2);max-width:27em;font-size:14.5px;text-wrap:pretty}
+.lead{margin-top:26px;color:var(--t2);max-width:29em;font-size:14px;text-wrap:pretty}
 
 /* 連結樣式：只有一種主要動作「LINE 預約」 */
-.btn-line{display:inline-block;border:1px solid currentColor;padding:11px 26px;font-size:12.5px;
-  letter-spacing:.24em;white-space:nowrap;transition:background .35s,color .35s}
+.btn-line{display:inline-block;border:1px solid currentColor;padding:11px 26px;font-size:13px;
+  letter-spacing:.14em;white-space:nowrap;transition:background .35s,color .35s}
 .on-dark .btn-line:hover,nav .btn-line:hover{background:var(--on-dark);color:var(--dark)}
 .on-sand .btn-line:hover{background:var(--on-sand);color:var(--sand)}
 .btn-line:active{transform:scale(.98)}
-.link-u{font-size:12.5px;letter-spacing:.2em;padding-bottom:5px;border-bottom:1px solid currentColor;white-space:nowrap}
+.link-u{font-size:13px;letter-spacing:.1em;padding-bottom:5px;border-bottom:1px solid currentColor;white-space:nowrap}
 .link-u:hover{color:var(--gold)}
 
 /* NAV */
 nav{position:fixed;inset:0 0 auto 0;z-index:40;height:var(--nav-h);display:flex;align-items:center;
   padding-inline:var(--pad);justify-content:space-between;gap:24px;color:var(--on-dark);
-  background:rgba(42,32,25,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.brand{font-family:"Noto Serif TC",serif;font-weight:400;font-size:19px;letter-spacing:.2em;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);font-size:12.5px;letter-spacing:.2em;white-space:nowrap}
+  background:rgba(30,22,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+@keyframes nav-in{from{background:rgba(30,22,17,0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0)}to{background:rgba(30,22,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}}
+@supports (animation-timeline:scroll()){nav{animation:nav-in linear both;animation-timeline:scroll(root);animation-range:60vh 100vh}}
+.brand{font-family:"Noto Serif TC",serif;font-weight:300;font-size:20px;letter-spacing:.16em;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);font-size:13.5px;letter-spacing:.1em;white-space:nowrap}
 .nav-links a:not(.btn-line){color:var(--on-dark-2);transition:color .3s}
 .nav-links a:not(.btn-line):hover{color:var(--on-dark)}
 nav .btn-line{padding:8px 20px}
@@ -61,9 +83,19 @@ nav .btn-line{padding:8px 20px}
 /* 一屏一段 */
 .panel{min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;
   padding:calc(var(--nav-h) + 40px) var(--pad) 60px}
-.hero h1{font-size:clamp(26px,3.3vw,46px);letter-spacing:.16em}
-.hero .h1-sub{display:block;margin-top:34px;font-size:14px;letter-spacing:.2em;line-height:2.3;color:var(--on-dark-2)}
-.hero p{font-size:14px;letter-spacing:.2em;line-height:2.3;color:var(--on-dark-2)}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:#5A4234}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;
+  background-image:var(--grain),var(--streak-dark),var(--streak-light),
+    radial-gradient(72% 64% at 36% 30%,rgba(176,128,96,.5),transparent 70%),
+    radial-gradient(58% 70% at 88% 22%,rgba(140,96,70,.4),transparent 68%),
+    linear-gradient(100deg,#49352A 0%,#674B3A 34%,#70523F 56%,#4E392D 100%);
+  background-size:220px 220px,cover,cover,100% 100%,100% 100%,100% 100%;
+  background-blend-mode:soft-light,multiply,soft-light,normal,normal,normal}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(rgba(34,25,19,.06) 0%,rgba(34,25,19,.16) 45%,rgba(34,25,19,.66) 100%)}
+.hero h1{font-size:clamp(26px,3.1vw,44px);letter-spacing:.08em}
+.hero .h1-sub{display:block;margin-top:30px;font-size:14px;font-weight:300;letter-spacing:.07em;line-height:1.9;color:rgba(251,248,242,.86)}
+.hero p{font-size:14px;letter-spacing:.07em;line-height:1.9;color:rgba(251,248,242,.86)}
 
 /* 左文右圖 */
 .split{display:grid;grid-template-columns:1fr 1fr;min-height:100dvh}
@@ -79,16 +111,16 @@ nav .btn-line{padding:8px 20px}
 /* 只放一句話的呼吸段 */
 .breathe{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:90px var(--pad)}
-.breathe h2{font-size:clamp(21px,2.3vw,30px);letter-spacing:.18em}
-.breathe p{margin-top:22px;font-size:13px;letter-spacing:.2em;color:var(--t2)}
+.breathe h2{font-size:clamp(21px,2.2vw,29px);letter-spacing:.07em}
+.breathe p{margin-top:20px;font-size:13.5px;letter-spacing:.07em;color:var(--t2)}
 
 /* 一欄文字加兩張直幅圖 */
 .trio{display:grid;grid-template-columns:1fr 1fr 1fr;min-height:100dvh}
 .trio .split-txt{padding-right:clamp(24px,3vw,48px)}
 .steps{margin-top:36px;border-top:1px solid var(--ln);max-width:26em}
 .steps li{list-style:none;padding:16px 0;border-bottom:1px solid var(--ln)}
-.steps b{display:block;font-weight:400;font-size:14.5px;letter-spacing:.14em}
-.steps span{display:block;margin-top:2px;font-size:13px;color:var(--t2);line-height:1.95}
+.steps b{display:block;font-weight:400;font-size:14.5px;letter-spacing:.06em}
+.steps span{display:block;margin-top:3px;font-size:13px;color:var(--t2);line-height:1.8}
 
 /* 課程：一堂課一屏，圖在右側融進底色 */
 .cp{position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden;
@@ -98,13 +130,13 @@ nav .btn-line{padding:8px 20px}
 .cp-img img{width:100%;height:100%;object-fit:cover}
 .cp-body{position:relative;z-index:1;max-width:25em}
 .cp-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:46px}
-.cp-tabs a{border:1px solid var(--ln);padding:6px 16px;font-size:11.5px;letter-spacing:.18em;color:var(--t2);white-space:nowrap;transition:border-color .3s,color .3s}
+.cp-tabs a{border:1px solid var(--ln);padding:6px 16px;font-size:12px;letter-spacing:.08em;color:var(--t2);white-space:nowrap;transition:border-color .3s,color .3s}
 .cp-tabs a:hover,.cp-tabs a.on{border-color:currentColor;color:inherit}
-.cp-name{font-size:clamp(30px,3.7vw,50px);letter-spacing:.14em;line-height:1.4;white-space:nowrap}
-.cp-price{margin-top:8px;font-family:Jost,sans-serif;font-size:15px;letter-spacing:.24em;color:var(--t2)}
+.cp-name{font-size:clamp(30px,3.5vw,48px);font-weight:300;letter-spacing:.03em;line-height:1.3;white-space:nowrap}
+.cp-price{margin-top:10px;font-family:Jost,"Noto Sans TC",sans-serif;font-size:15px;letter-spacing:.06em;color:var(--t2)}
 .cp-desc{margin-top:28px;font-size:14px;color:var(--t2);text-wrap:pretty}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.chips span{border:1px solid var(--ln);padding:5px 15px;font-size:12px;letter-spacing:.14em;white-space:nowrap}
+.chips span{border:1px solid var(--ln);padding:5px 15px;font-size:12px;letter-spacing:.06em;white-space:nowrap}
 .cp-links{display:flex;flex-wrap:wrap;gap:30px;margin-top:38px}
 
 /* 交通資訊 */
@@ -114,11 +146,14 @@ nav .btn-line{padding:8px 20px}
 .info div{display:grid;grid-template-columns:5.5em 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--ln);font-size:13.5px}
 .info dt{color:var(--t2)}
 .visit-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.map-slot{aspect-ratio:4/3;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;
-  font-size:12.5px;letter-spacing:.2em;color:var(--t2);text-align:center;padding:20px}
+.map{aspect-ratio:4/3;border:1px solid var(--ln);overflow:hidden}
+/* 地圖調成跟頁面同一個暖色調 */
+.map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(1) sepia(.38) contrast(.92) brightness(.9)}
+.btn-line.ghost{border-color:var(--ln)}
+.quote{margin-top:30px;max-width:30em;font-size:15px;line-height:2;letter-spacing:.05em;color:var(--t2)}
 
-footer{padding:54px var(--pad);display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap;
-  font-size:12px;letter-spacing:.2em;color:var(--on-dark-2);border-top:1px solid var(--line-dark)}
+footer{background:linear-gradient(180deg,#241B15,#1B140F);padding:54px var(--pad);display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap;
+  font-size:12.5px;letter-spacing:.08em;color:var(--on-dark-2);border-top:1px solid var(--line-dark)}
 footer .brand{color:var(--on-dark)}
 .foot-links{display:flex;gap:26px;flex-wrap:wrap}
 
