@@ -168,6 +168,7 @@ footer .brand{color:var(--on-dark)}
   .split,.trio,.visit{grid-template-columns:1fr}
   .split,.trio{min-height:0}
   .split-img{order:-1;min-height:74vh}
+  .split-img.landscape{min-height:0;aspect-ratio:16/10}  /* 橫幅照片在手機上不裁成直的，保留招牌完整 */
   .split-txt{padding:64px var(--pad) 72px}
   .trio .split-txt{grid-column:1}
   .trio .split-img{order:0;min-height:56vh}
