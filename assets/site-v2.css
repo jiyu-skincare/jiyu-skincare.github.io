@@ -135,7 +135,7 @@ nav .btn-line{padding:8px 20px}
 .split-img.brand-shot img{top:var(--nav-h);height:calc(100% - var(--nav-h));object-position:center top}
 .trio .split-img.brand-shot img{top:auto;bottom:0;height:117%;object-position:center bottom}
 .cp-body{position:relative;z-index:1;max-width:25em}
-.cp-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:46px}
+.cp-tabs{display:flex;flex-wrap:nowrap;width:max-content;gap:10px;margin-bottom:46px}
 .cp-tabs a{border:1px solid var(--ln);padding:6px 16px;font-size:12px;letter-spacing:.08em;color:var(--t2);white-space:nowrap;transition:border-color .3s,color .3s}
 .cp-tabs a:hover,.cp-tabs a.on{border-color:currentColor;color:inherit}
 .cp-name{font-size:clamp(30px,3.5vw,48px);font-weight:300;letter-spacing:.03em;line-height:1.3;white-space:nowrap}
@@ -177,7 +177,7 @@ footer .brand{color:var(--on-dark)}
   .cp-img{position:relative;width:100%;height:64vh;
     -webkit-mask-image:linear-gradient(to top,transparent 0,#000 30%);mask-image:linear-gradient(to top,transparent 0,#000 30%)}
   .cp-body{padding:8px var(--pad) 76px;margin-top:-40px}
-  .cp-tabs{margin-bottom:30px}
+  .cp-tabs{margin-bottom:30px;flex-wrap:wrap;width:auto}
   .cp-name{white-space:normal;text-wrap:balance}
 }
 
@@ -206,7 +206,8 @@ footer .brand{color:var(--on-dark)}
 
 /* 價格區 */
 .sec{padding:clamp(84px,10vw,140px) var(--pad)}
-.sec-head{max-width:34em;margin-bottom:46px}
+.sec-head{margin-bottom:46px}
+.sec-head .h-lg{max-width:24em;text-wrap:balance}
 .plans{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
 .plans div{padding:30px 22px 30px 0}
 .plans div+div{padding-left:26px;border-left:1px solid var(--ln)}
@@ -247,3 +248,16 @@ footer .brand{color:var(--on-dark)}
 .care3 li{list-style:none;position:relative;padding:9px 0 9px 20px;font-size:13.5px;color:var(--t2);line-height:1.8}
 .care3 li::before{content:"";position:absolute;left:0;top:1.35em;width:9px;height:1px;background:var(--gold)}
 @media(max-width:860px){.lv-r{grid-template-columns:1fr;padding:36px 0}.care3{grid-template-columns:1fr}.lv-n small{display:block;margin:4px 0 0}}
+
+/* ══ 對照表（項目×層級、層級×包堂）══ 最後更新 2026-11-15 */
+.mx{display:grid;border-top:1px solid var(--ln)}
+.mx.c4{grid-template-columns:1.05fr repeat(3,1fr)}
+.mx.c5{grid-template-columns:.8fr repeat(4,1fr)}
+.mx>div{padding:20px 18px 20px 0;border-bottom:1px solid var(--ln);font-size:14px;color:var(--t2);line-height:1.7}
+.mx .h{font-size:12.5px;letter-spacing:.08em;padding-block:14px}
+.mx .k{font-size:16.5px;color:inherit;letter-spacing:.05em}
+.mx .num{font-family:Jost,sans-serif;font-weight:300;font-size:21px;color:inherit;letter-spacing:.03em}
+.on-dark .mx .k,.on-dark .mx .num{color:var(--on-dark)}
+.on-sand .mx .k,.on-sand .mx .num{color:var(--on-sand)}
+.faq p a.link-u,.lead a.link-u{font-size:inherit;letter-spacing:inherit;padding-bottom:2px}
+@media(max-width:860px){.mx>div{padding:14px 8px 14px 0;font-size:12.5px}.mx .k{font-size:14px}.mx .num{font-size:16px}.mx .h{font-size:11px}}
