@@ -37,6 +37,7 @@
       var p = span > 0 ? clamp((y - scene.offsetTop) / span) : 0;
       var push = seg(p, 0.36, 0.86);
       var s = scene.style;
+      s.setProperty('--p', p.toFixed(4));
       s.setProperty('--open', seg(p, 0.05, 0.46).toFixed(4));
       s.setProperty('--push', (push * push).toFixed(4));
       s.setProperty('--light', seg(p, 0.08, 0.84).toFixed(4));
