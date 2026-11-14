@@ -278,3 +278,24 @@ footer .brand{color:var(--on-dark)}
 .js-rv .rv.in{opacity:1;transform:none}
 .js-nav nav.nav-fade{animation:none;background:rgba(30,22,17,0);backdrop-filter:none;-webkit-backdrop-filter:none;transition:background .45s}
 .js-nav nav.nav-fade.solid{background:rgba(30,22,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+
+/* ══ 質感牆面：還沒有照片的位置先用這個，之後有照片再換回 <img> ══ 最後更新 2026-11-15
+   用法：<div class="split-img is-tex"><div class="tex clay" data-word="CLASSIC"></div></div> */
+.tex{position:absolute;inset:0;overflow:hidden;background:var(--c2,#6E513E)}
+.tex::before{content:"";position:absolute;inset:0;
+  background-image:var(--grain),var(--streak-dark),var(--streak-light),
+    radial-gradient(72% 62% at var(--lx,36%) var(--ly,28%),var(--hi,rgba(198,152,114,.5)),transparent 70%),
+    linear-gradient(var(--ang,108deg),var(--c1,#49352A) 0%,var(--c2,#6E513E) 52%,var(--c3,#4A372B) 100%);
+  background-size:220px 220px,cover,cover,100% 100%,100% 100%;
+  background-blend-mode:soft-light,multiply,soft-light,normal,normal}
+.tex::after{content:attr(data-word);position:absolute;right:6%;bottom:11%;
+  font-family:Jost,sans-serif;font-weight:300;font-size:clamp(40px,6.4vw,104px);letter-spacing:.1em;line-height:1;
+  color:rgba(251,248,242,.1);white-space:nowrap}
+.tex.clay{--c1:#553B2E;--c2:#7A5744;--c3:#4C362A;--lx:62%;--ly:24%}
+.tex.deep{--c1:#2C2019;--c2:#45342A;--c3:#231913;--hi:rgba(150,112,84,.42);--lx:30%;--ly:70%;--ang:200deg}
+.tex.rose{--c1:#5E4338;--c2:#86604F;--c3:#573E33;--hi:rgba(214,166,134,.46);--lx:70%;--ly:66%;--ang:160deg}
+.tex.umber{--c1:#3E2D23;--c2:#5F4636;--c3:#372820;--lx:44%;--ly:36%;--ang:80deg}
+@media(max-width:860px){
+  .split-img.is-tex{min-height:34vh}
+  .cp-img.is-tex{height:36vh}
+}
