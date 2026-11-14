@@ -261,3 +261,13 @@ footer .brand{color:var(--on-dark)}
 .on-sand .mx .k,.on-sand .mx .num{color:var(--on-sand)}
 .faq p a.link-u,.lead a.link-u{font-size:inherit;letter-spacing:inherit;padding-bottom:2px}
 @media(max-width:860px){.mx>div{padding:14px 8px 14px 0;font-size:12.5px}.mx .k{font-size:14px}.mx .num{font-size:16px}.mx .h{font-size:11px}}
+
+/* ══ 客人評論：三則並排，節錄自 Google 評論原文 ══ 最後更新 2026-11-15 */
+.reviews{padding:clamp(96px,11vw,156px) var(--pad);text-align:center}
+.reviews h2{font-size:clamp(21px,2.2vw,29px);letter-spacing:.07em}
+.reviews .eyebrow{margin-bottom:22px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,4vw,64px);max-width:1180px;margin:60px auto 50px;text-align:left}
+.quotes figure{border-top:1px solid var(--ln);padding-top:22px}
+.quotes figcaption{font-size:12px;letter-spacing:.2em;color:var(--ac);margin-bottom:16px}
+.quotes blockquote{font-size:15px;line-height:2.05;letter-spacing:.04em;color:var(--on-dark);opacity:.9}
+@media(max-width:860px){.quotes{grid-template-columns:1fr;margin:44px 0 40px}}
