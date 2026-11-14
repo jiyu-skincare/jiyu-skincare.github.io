@@ -55,7 +55,7 @@ strong{font-weight:400}
 .eyebrow .en{letter-spacing:.34em}
 h1,h2,h3{font-weight:200;letter-spacing:.08em;line-height:1.4}
 .on-dark h1,.on-dark h2,.on-dark h3{color:#FBF8F2}
-.h-lg{font-size:clamp(23px,2.5vw,34px)}
+.h-lg{font-size:clamp(23px,2.5vw,34px);text-wrap:balance}
 .lead{margin-top:26px;color:var(--t2);max-width:29em;font-size:14px;text-wrap:pretty}
 
 /* 連結樣式：只有一種主要動作「LINE 預約」 */
