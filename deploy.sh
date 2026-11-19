@@ -9,7 +9,8 @@ URL="https://jiyu-skincare.github.io/"
 
 echo "🚀 開始發佈官網..."
 
-if git diff --quiet && git diff --cached --quiet; then
+# 最後更新 2026-11-19:改用 status 判斷,新增的檔案(尚未追蹤)也算變動
+if [ -z "$(git status --porcelain)" ]; then
   echo "ℹ️  沒有變動，不用發佈"
   exit 0
 fi
